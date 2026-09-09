@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
   Core::Display dp = {
     .config = {
       .title = "GLES Template",
-      .width = 80,
+      .width = 800,
       .height = 600,
     },
   };
