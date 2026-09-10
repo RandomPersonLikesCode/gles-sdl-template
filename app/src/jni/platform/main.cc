@@ -7,13 +7,10 @@
 #include <SDL3/SDL_main.h>
 
 int main(int argc, char **argv) {
-  Core::Display dp = {
-    .config = {
-      .title = "GLES Template",
-      .width = 800,
-      .height = 600,
-    },
-  };
+  Core::Display dp = {};
+  dp.config.title  = "GLES Template";
+  dp.config.width  = 800;
+  dp.config.height = 600;
 
   if (!dp.create()) {
     return false;

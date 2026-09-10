@@ -6,18 +6,18 @@
 
 namespace Core {
   struct Display {
-    SDL_Window   *window  = nullptr;
-    SDL_GLContext context = nullptr;
+    SDL_Window   *window;
+    SDL_GLContext context;
 
     struct {
-      const char *title = "";
+      const char *title;
 
-      int   width        = 0;
-      int   height       = 0;
-      int   width_px     = 0;
-      int   height_px    = 0;
-      float aspect_ratio = 0.0f;
-      float scaling      = 0.0f;
+      int   width;
+      int   height;
+      int   width_px;
+      int   height_px;
+      float aspect_ratio;
+      float scaling;
     } config;
 
     bool create(void);
