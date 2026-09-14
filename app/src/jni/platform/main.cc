@@ -13,6 +13,7 @@ int main(int argc, char **argv) {
   dp.config.height = 600;
 
   if (!dp.create()) {
+    dp.destroy();
     return false;
   }
 
@@ -36,5 +37,6 @@ int main(int argc, char **argv) {
     SDL_GL_SwapWindow(dp.window);
   }
 
+  dp.destroy();
   return 0;
 }
