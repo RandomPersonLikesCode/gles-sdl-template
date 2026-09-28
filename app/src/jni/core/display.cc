@@ -18,33 +18,28 @@ bool Core::Display::create(void) {
     return false;
   }
 
-  this->window = SDL_CreateWindow(
-      this->config.title, this->config.width, this->config.height,
-      SDL_WINDOW_FULLSCREEN | SDL_WINDOW_OPENGL);
+  window = SDL_CreateWindow(config.title, config.width, config.height,
+                            SDL_WINDOW_FULLSCREEN | SDL_WINDOW_OPENGL);
 
-  if (!this->window) {
+  if (!window) {
     return false;
   }
 
-  this->context = SDL_GL_CreateContext(this->window);
+  context = SDL_GL_CreateContext(window);
 
-  if (!this->context) {
+  if (!context) {
     return false;
   }
 
-  SDL_GL_MakeCurrent(this->window, this->context);
+  SDL_GL_MakeCurrent(window, context);
   SDL_GL_SetSwapInterval(1);
 
-  SDL_GetWindowSize(this->window, &this->config.width,
-                    &this->config.height);
+  SDL_GetWindowSize(window, &config.width, &config.height);
 
-  SDL_GetWindowSizeInPixels(this->window, &this->config.width_px,
-                            &this->config.height_px);
+  SDL_GetWindowSizeInPixels(window, &config.width_px, &config.height_px);
 
-  this->config.aspect_ratio =
-      static_cast<float>(this->config.width) / this->config.height;
-  this->config.scaling =
-      SDL_GetDisplayContentScale(SDL_GetPrimaryDisplay());
+  config.aspect_ratio = static_cast<float>(config.width) / config.height;
+  config.scaling = SDL_GetDisplayContentScale(SDL_GetPrimaryDisplay());
 
   return true;
 }
@@ -52,7 +47,7 @@ bool Core::Display::create(void) {
 void Core::Display::destroy(void) {
   SDL_GL_MakeCurrent(nullptr, nullptr);
 
-  SDL_GL_DestroyContext(this->context);
-  SDL_DestroyWindow(this->window);
+  SDL_GL_DestroyContext(context);
+  SDL_DestroyWindow(window);
   SDL_Quit();
 }
