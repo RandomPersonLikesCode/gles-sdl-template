@@ -8,16 +8,16 @@
 
 int main(int argc, char **argv) {
   Core::Display dp = {};
-  dp.config.title  = "GLES Template";
-  dp.config.width  = 800;
-  dp.config.height = 600;
+  dp.props.title   = "GLES Template";
+  dp.props.width   = 800;
+  dp.props.height  = 600;
 
   if (!dp.create()) {
     dp.destroy();
     return false;
   }
 
-  glViewport(0, 0, dp.config.width_px, dp.config.height_px);
+  glViewport(0, 0, dp.props.width_px, dp.props.height_px);
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
   bool is_running = true;

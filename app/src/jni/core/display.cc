@@ -18,7 +18,7 @@ bool Core::Display::create(void) {
     return false;
   }
 
-  window = SDL_CreateWindow(config.title, config.width, config.height,
+  window = SDL_CreateWindow(props.title, props.width, props.height,
                             SDL_WINDOW_FULLSCREEN | SDL_WINDOW_OPENGL);
 
   if (!window) {
@@ -34,12 +34,12 @@ bool Core::Display::create(void) {
   SDL_GL_MakeCurrent(window, context);
   SDL_GL_SetSwapInterval(1);
 
-  SDL_GetWindowSize(window, &config.width, &config.height);
+  SDL_GetWindowSize(window, &props.width, &props.height);
 
-  SDL_GetWindowSizeInPixels(window, &config.width_px, &config.height_px);
+  SDL_GetWindowSizeInPixels(window, &props.width_px, &props.height_px);
 
-  config.aspect_ratio = static_cast<float>(config.width) / config.height;
-  config.scaling = SDL_GetDisplayContentScale(SDL_GetPrimaryDisplay());
+  props.aspect_ratio = static_cast<float>(props.width) / props.height;
+  props.scaling      = SDL_GetDisplayContentScale(SDL_GetPrimaryDisplay());
 
   return true;
 }

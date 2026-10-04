@@ -18,7 +18,7 @@ namespace Core {
       int   height_px;
       float aspect_ratio;
       float scaling;
-    } config;
+    } props;
 
     bool create(void);
     void destroy(void);
