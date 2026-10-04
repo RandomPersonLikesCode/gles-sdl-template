@@ -1,5 +1,5 @@
 shopt -s globstar
-set -eu
+set -xeu
 
 min_api="26"
 sdk_level="35"

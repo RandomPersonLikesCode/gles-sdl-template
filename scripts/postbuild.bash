@@ -1,5 +1,5 @@
 shopt -s globstar
-set -eu
+set -xeu
 
 sdk_level="35"
 sdk="$ANDROID_HOME/platforms/android-$sdk_level/android.jar"
