@@ -15,7 +15,7 @@ started in graphics programming.
 - Android NDK
 
 Precompiled dependencies:
-- SDL3 (v3.4.14)
+- SDL3 (v3.4.18)
 
 Make sure to have `.a` for the listed dependencies, for arm64-v8a
 and armeabi-v7a architecture inside `$ANDROID_HOME/lib`. make
