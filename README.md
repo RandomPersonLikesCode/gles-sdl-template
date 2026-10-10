@@ -4,38 +4,20 @@
 A basic OpenGL ES and SDL3 template project in C++ to get
 started in graphics programming.
 
-## Building
 ### Prerequisites
 
-- Unix-like system
-- Bash
-- XMake
-- OpenJDK
-- Android SDK
-- Android NDK
+Tools:
+- CMake
 
 Precompiled dependencies:
 - SDL3 (v3.4.18)
 
-Make sure to have `.a` for the listed dependencies, for arm64-v8a
-and armeabi-v7a architecture inside `$ANDROID_HOME/lib`. make
-sure to also put necessary headers inside `$ANDROID_HOME/include`.
+## Note
 
-### Building the APK
-
-```shell
-xmake f -p android
-bash ./scripts/prebuild.bash
-
-xmake build
-
-bash ./scripts/postbuild.bash
-```
-
-### Signing the APK
-
-See the [apksigner documentation](https://developer.android.com/tools/apksigner) for
-more information.
+This template is not cross platform (yet) and only
+supports (tested on) targeting Android, feel free to
+contribute to make this template cross platform when
+targeting to all major platform.
 
 ## License
 

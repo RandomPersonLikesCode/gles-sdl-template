@@ -1,0 +1,73 @@
+set no-cd
+
+min_level := "26"
+sdk_level := "34"
+sdk_dir := env("ANDROID_HOME") + "/platforms/android-" + sdk_level + "/android.jar"
+android_dir := "app/android"
+lib_name := "libmain.so"
+
+[private]
+setup_dirs:
+  rm -rf build/bin
+  mkdir -p build/bin build/res
+
+[private]
+dex:
+  find app/android/src/java -name "*.java" > build/java_src.txt
+  cp build/_deps/sdl3-build/SDL3-3.4.18.jar SDL3.jar
+
+  javac --release 17 -cp "{{sdk_dir}}:SDL3.jar" -d build/obj \
+      @build/java_src.txt
+  d8 --min-api "{{min_level}}" --lib "{{sdk_dir}}" \
+    --output build/obj `find build/obj -name "*.class"` SDL3.jar
+
+  rm SDL3.jar
+
+[private]
+setup_libs_64:
+  rm -rf build/lib
+  mkdir -p build/lib/arm64-v8a
+  cp "build/app/src/{{lib_name}}" build/lib/arm64-v8a
+
+[private]
+setup_libs_32:
+  rm -rf build/lib
+  mkdir -p build/lib/armeabi-v7a
+  cp "build/app/src/{{lib_name}}" build/lib/arm64-v8a
+
+[private]
+aapt2:
+  aapt2 compile -o build/res --dir "{{android_dir}}/res"
+  aapt2 link -I "{{sdk_dir}}" \
+    --manifest "{{android_dir}}/AndroidManifest.xml" \
+    -o build/bin/app-unsigned.apk \
+    build/res/*.flat
+
+[private]
+zip:
+  ln -s ./build/lib ./lib
+  ln -s ./build/obj/classes.dex ./classes.dex
+  ln -s ./app/assets/ ./assets
+
+  zip -0 -qur build/bin/app-unsigned.apk \
+    lib
+  zip -0 -qur build/bin/app-unsigned.apk \
+    classes.dex
+  zip -0 -qur build/bin/app-unsigned.apk \
+    assets
+
+  rm ./assets
+  rm ./classes.dex
+  rm ./lib
+
+[private]
+zipalign:
+  zipalign 4 build/bin/app-unsigned.apk build/bin/app-aligned.apk
+
+package-dex: dex
+package-android-arm64: setup_dirs setup_libs_64 aapt2 zip zipalign
+package-android-arm32: setup_dirs setup_libs_32 aapt2 zip zipalign
+
+[default]
+help:
+  @just --justfile app/android/justfile --list

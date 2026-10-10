@@ -1,6 +1,5 @@
 build/
 .cache/
-.xmake/
 
 *.p12
 
