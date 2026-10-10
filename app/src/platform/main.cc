@@ -12,13 +12,13 @@ int main(int argc, char **argv) {
   dp.props.width   = 800;
   dp.props.height  = 600;
 
-  if (!dp.create()) {
-    dp.destroy();
+  if (!Core::Display::create(dp)) {
+    Core::Display::destroy(dp);
     return 1;
   }
 
   glViewport(0, 0, dp.props.width_px, dp.props.height_px);
-  glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+  glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
   bool is_running = true;
   while (is_running) {
@@ -37,6 +37,6 @@ int main(int argc, char **argv) {
     SDL_GL_SwapWindow(dp.window);
   }
 
-  dp.destroy();
+  Core::Display::destroy(dp);
   return 0;
 }

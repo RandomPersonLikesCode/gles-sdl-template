@@ -20,7 +20,7 @@ namespace Core {
       float scaling;
     } props;
 
-    bool create(void);
-    void destroy(void);
+    static bool create(Display &dp);
+    static void destroy(Display &dp);
   };
 } // namespace Core

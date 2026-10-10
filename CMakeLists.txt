@@ -13,10 +13,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} -s")
 
 FetchContent_Declare("sdl3"
-  GIT_REPOSITORY "https://github.com/libsdl-org/SDL"
-  GIT_TAG "release-3.4.18"
-  GIT_SHALLOW TRUE
-  GIT_PROGRESS TRUE
+  URL "https://github.com/libsdl-org/SDL/releases/download/release-3.4.18/SDL3-3.4.18.zip"
+  URL_HASH "SHA256=9cd42377704398796071b8597cd7e21da254a43bad98c4199739647adc13fa6f"
 )
 
 set(SDL_AUDIO FALSE CACHE BOOL "" FORCE)
