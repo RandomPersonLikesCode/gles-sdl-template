@@ -9,9 +9,6 @@ started in graphics programming.
 Tools:
 - CMake
 
-Precompiled dependencies:
-- SDL3 (v3.4.18)
-
 ## Note
 
 This template is not cross platform (yet) and only
