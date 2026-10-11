@@ -11,10 +11,9 @@ Tools:
 
 ## Note
 
-This template is not cross platform (yet) and only
-supports (tested on) targeting Android, feel free to
-contribute to make this template cross platform when
-targeting to all major platform.
+This template is not cross platform yet and only tested on
+targeting Android on a Linux machine, feel free to contribute to make this
+template cross platform when targeting to all major platform (Desktop).
 
 ## License
 
