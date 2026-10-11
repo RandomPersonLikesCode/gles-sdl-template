@@ -13,8 +13,8 @@ add_library("main" SHARED
 )
 
 set_target_properties("main" PROPERTIES
-    CXX_VISIBILITY_PRESET hidden
-    VISIBILITY_INLINES_HIDDEN TRUE
+  CXX_VISIBILITY_PRESET hidden
+  VISIBILITY_INLINES_HIDDEN TRUE
 )
 
 target_compile_options("main" PRIVATE
