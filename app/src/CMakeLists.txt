@@ -22,6 +22,11 @@ target_compile_options("main" PRIVATE
   "-fno-exceptions"
 )
 
+target_compile_definitions("main" PRIVATE
+  $<$<CONFIG:Debug>:SDL_ASSERT_LEVEL=3>
+  $<$<CONFIG:Release>:SDL_ASSERT_LEVEL=0>
+)
+
 target_include_directories("main" PRIVATE
   "${CMAKE_SOURCE_DIR}/third_party/include"
 )
