@@ -17,7 +17,9 @@ set(FETCHCONTENT_QUIET FALSE)
 FetchContent_Declare("sdl3"
   GIT_REPOSITORY "https://github.com/libsdl-org/SDL"
   GIT_TAG "release-3.4.18"
+
   GIT_SHALLOW TRUE
+  GIT_PROGRESS TRUE
 )
 
 set(SDL_AUDIO FALSE CACHE BOOL "" FORCE)
