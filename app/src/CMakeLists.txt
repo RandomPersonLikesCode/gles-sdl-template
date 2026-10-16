@@ -18,6 +18,9 @@ set_target_properties("main" PROPERTIES
 )
 
 target_compile_options("main" PRIVATE
+  "-Wall"
+  "-Wextra"
+  "-Wpedantic"
   "-fno-rtti"
   "-fno-exceptions"
 )
